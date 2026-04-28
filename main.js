@@ -27,10 +27,29 @@ saludar("Mendoza")
 saludar("aa")
 */
 
+const header = document.querySelector('header')
+let lastScroll = 0
 
+window.addEventListener('scroll', function() {
+    const currentScroll = window.scrollY
+    
+    if (currentScroll > lastScroll) {
+        header.style.transform = 'translateY(-100%)'
+    } else {
+        header.style.transform = 'translateY(0)'
+    }
+    
+    lastScroll = currentScroll
+})
 
 const carrusel = document.querySelector('.fotos-scroll')
+let direccion = 1
 
 setInterval(function() {
-    carrusel.scrollLeft += 1
+    if (carrusel.scrollLeft >= carrusel.scrollWidth - carrusel.clientWidth) {
+        direccion = -1
+    } else if (carrusel.scrollLeft <= 0) {
+        direccion = 1
+    }
+    carrusel.scrollLeft += direccion
 }, 30)
