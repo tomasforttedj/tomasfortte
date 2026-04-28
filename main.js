@@ -28,9 +28,9 @@ saludar("aa")
 */
 
 
-const boton = document.getElementById("btn-wpp")
 
-boton.addEventListener("click", function(){
-    console.log("clickearon whatsapp")
-})
+const carrusel = document.querySelector('.fotos-scroll')
 
+setInterval(function() {
+    carrusel.scrollLeft += 0.5
+}, 20)
