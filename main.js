@@ -32,5 +32,5 @@ saludar("aa")
 const carrusel = document.querySelector('.fotos-scroll')
 
 setInterval(function() {
-    carrusel.scrollLeft += 0.5
-}, 20)
+    carrusel.scrollLeft += 1
+}, 30)

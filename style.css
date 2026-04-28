@@ -118,6 +118,9 @@ main h3 {
     height: 350px;
     gap: 20px;
     overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    
+
 }
 .fotos-scroll::-webkit-scrollbar{
     display: none;
