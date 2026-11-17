@@ -554,129 +554,86 @@ h1, h2 {
 }
 
 
-/* ---------- booking / contacto: una tarjeta con botón grande y lista de datos ---------- */
+/* ---------- booking: título grande a la izquierda, datos numerados a la derecha ---------- */
 
 .booking {
-    padding: clamp(80px, 12vw, 160px) var(--pad);
+    padding: clamp(96px, 12vw, 180px) var(--pad);
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(48px, 6vw, 96px);
+    align-items: end;
 }
 
-.contacto {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: clamp(28px, 5vw, 72px);
-    border: 1px solid var(--line);
-    border-radius: 28px;
-    background: #0e0e0e;
+.booking__titulo {
+    margin-top: 20px;
+    font-family: "Archivo Black", var(--font-display);
+    font-weight: 400;
+    font-size: clamp(44px, 6.4vw, 104px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
 }
 
-.contacto__label {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+.booking__texto {
+    margin: 28px 0 36px;
+    max-width: 440px;
     color: var(--muted);
 }
 
-.contacto__label span {
-    width: 40px;
-    height: 1px;
-    background: var(--muted);
+.booking__lista li {
+    border-bottom: 1px solid var(--line);
 }
 
-.contacto__titulo {
-    margin-top: 24px;
-    font-size: clamp(48px, 8vw, 110px);
-    text-transform: none;
-}
-
-.contacto__texto {
-    margin-top: clamp(28px, 4vw, 48px);
-    color: var(--muted);
-    font-size: 18px;
-}
-
-.contacto__boton {
-    margin-top: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    min-height: 76px;
-    padding: 0 24px;
-    border-radius: 16px;
-    background: var(--fg);
-    color: var(--bg);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    text-align: center;
-    transition: opacity 0.2s;
-}
-
-.contacto__boton:hover {
-    opacity: 0.88;
-}
-
-.contacto__lista {
-    margin-top: 24px;
-}
-
-.contacto__lista li {
+.booking__lista li:first-child {
     border-top: 1px solid var(--line);
 }
 
-.contacto__lista a {
+/* cada fila se invierte (blanco con letra negra) al pasar el mouse */
+.booking__lista a {
     display: flex;
     align-items: center;
-    gap: 20px;
-    padding: 22px 0;
+    gap: 24px;
+    padding: 28px 16px;
+    transition: background 0.25s, color 0.25s;
 }
 
-.contacto__icono {
-    flex: 0 0 auto;
-    width: 56px;
-    height: 56px;
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    transition: border-color 0.2s;
+.booking__lista a:hover {
+    background: var(--fg);
+    color: var(--bg);
 }
 
-.contacto__dato {
+.booking__num {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.booking__lista a:hover .booking__num,
+.booking__lista a:hover small {
+    color: var(--bg);
+}
+
+.booking__dato {
     flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    font-size: clamp(17px, 2vw, 22px);
-    overflow-wrap: anywhere;
+    gap: 6px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(16px, 1.6vw, 22px);
+    letter-spacing: -0.01em;
 }
 
-.contacto__dato small {
+.booking__dato small {
+    font-family: var(--font-body);
+    font-weight: 500;
     font-size: 12px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
-}
-
-.contacto__flecha {
-    flex: 0 0 auto;
-    color: var(--muted);
-    transition: transform 0.2s, color 0.2s;
-}
-
-.contacto__lista a:hover .contacto__icono {
-    border-color: var(--fg);
-}
-
-.contacto__lista a:hover .contacto__flecha {
-    color: var(--fg);
-    transform: translateX(4px);
+    transition: color 0.25s;
 }
 
 
@@ -819,6 +776,11 @@ h1, h2 {
     .puerta--light .puerta__media {
         order: 0;
     }
+
+    .booking {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
 }
 
 @media (max-width: 600px) {
@@ -855,28 +817,17 @@ h1, h2 {
         width: 100%;
     }
 
-    .contacto__boton {
-        letter-spacing: 0.1em;
-        font-size: 13px;
+    .booking__lista a {
+        gap: 16px;
+        padding: 22px 4px;
     }
 
-    .contacto {
-        padding: 24px 20px;
-        border-radius: 22px;
-    }
-
-    .contacto__lista a {
-        gap: 14px;
-    }
-
-    .contacto__icono {
-        width: 44px;
-        height: 44px;
-    }
-
-    .contacto__dato {
+    .booking__dato {
         font-size: 15px;
-        overflow-wrap: normal;
+    }
+
+    .booking .btn {
+        width: 100%;
     }
 }
 

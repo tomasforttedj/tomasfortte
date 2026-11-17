@@ -17,7 +17,7 @@
 
     <!-- las fuentes viven en /fonts (no dependen de Google) -->
     <link rel="preload" href="./fonts/archivo-black-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
 </head>
 
 <body>
@@ -177,47 +177,36 @@
 
         <!-- ========== BOOKING / CONTACTO ========== -->
         <section class="booking" id="booking" aria-labelledby="booking-titulo">
-            <div class="contacto reveal">
-                <p class="contacto__label"><span aria-hidden="true"></span>Contacto · Booking</p>
-                <h2 class="contacto__titulo" id="booking-titulo">Booking.</h2>
-                <p class="contacto__texto">Contame fecha, lugar y tipo de evento, y te respondo con disponibilidad.</p>
-
-                <a href="https://wa.me/5491125194491" class="contacto__boton" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8a4.6 4.6 0 0 1-2.7-2.7l.8-1-1-2z"/></svg>
-                    Reservar por WhatsApp
-                    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
-                </a>
-
-                <ul class="contacto__lista">
-                    <li>
-                        <a href="https://instagram.com/tomasfortte" target="_blank" rel="noopener">
-                            <span class="contacto__icono" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none"/></svg>
-                            </span>
-                            <span class="contacto__dato"><small>Instagram</small>@tomasfortte</span>
-                            <svg class="contacto__flecha" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailto:bookingbytoms@gmail.com">
-                            <span class="contacto__icono" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 7l8 6 8-6"/></svg>
-                            </span>
-                            <span class="contacto__dato"><small>Mail</small>bookingbytoms@gmail.com</span>
-                            <svg class="contacto__flecha" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://wa.me/5491125194491" target="_blank" rel="noopener">
-                            <span class="contacto__icono" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8a4.6 4.6 0 0 1-2.7-2.7l.8-1-1-2z"/></svg>
-                            </span>
-                            <span class="contacto__dato"><small>WhatsApp</small>+54 9 11 2519 4491</span>
-                            <svg class="contacto__flecha" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>
-                        </a>
-                    </li>
-                </ul>
+            <div class="booking__izq reveal">
+                <p class="label">Booking</p>
+                <h2 class="booking__titulo" id="booking-titulo">Hablemos<br>de tu fecha.</h2>
+                <p class="booking__texto">Contame fecha, lugar y tipo de evento, y te respondo con disponibilidad.</p>
+                <a href="https://wa.me/5491125194491" class="btn btn--solid btn--grande" target="_blank" rel="noopener">Escribime por WhatsApp</a>
             </div>
+
+            <ul class="booking__lista reveal">
+                <li>
+                    <a href="https://wa.me/5491125194491" target="_blank" rel="noopener">
+                        <span class="booking__num">01</span>
+                        <span class="booking__dato"><small>WhatsApp</small>+54 9 11 2519 4491</span>
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:bookingbytoms@gmail.com">
+                        <span class="booking__num">02</span>
+                        <span class="booking__dato"><small>Mail</small>bookingbytoms@gmail.com</span>
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/tomasfortte" target="_blank" rel="noopener">
+                        <span class="booking__num">03</span>
+                        <span class="booking__dato"><small>Instagram</small>@tomasfortte</span>
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                    </a>
+                </li>
+            </ul>
         </section>
 
     </main>
