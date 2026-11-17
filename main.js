@@ -133,11 +133,8 @@ document.querySelectorAll('.artistas__lista li').forEach(function (li, i) {
 
 
 // ---------- 7. Movimientos atados al scroll (estilo Apple) ----------
-// Una sola función que corre en cada frame mientras scrolleás:
-// a) la foto grande se abre según cuánto bajaste (--p va de 0 a 1)
-// b) las fotos de las puertas se mueven un poco más lento que la página (parallax)
+// Las fotos de las puertas se mueven un poco más lento que la página (parallax).
 
-const expand = document.querySelector('.expand')
 const parallaxFotos = document.querySelectorAll('.parallax')
 const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 let pedido = false
@@ -145,14 +142,6 @@ let pedido = false
 function actualizarScroll() {
     pedido = false
     const alto = window.innerHeight
-
-    if (expand) {
-        const caja = expand.getBoundingClientRect()
-        const recorrido = caja.height - alto
-        let p = -caja.top / (recorrido * 0.75)
-        p = Math.min(Math.max(p, 0), 1)
-        expand.style.setProperty('--p', p.toFixed(3))
-    }
 
     parallaxFotos.forEach(function (foto) {
         const caja = foto.parentElement.getBoundingClientRect()

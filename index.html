@@ -11,12 +11,13 @@
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#0a0a0a">
 
-    <link rel="icon" type="image/png" sizes="180x180" href="./media/favicon-180.png">
-    <link rel="apple-touch-icon" href="./media/favicon-180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./media/favicon-32.png?v=2">
+    <link rel="icon" type="image/png" sizes="180x180" href="./media/favicon-180.png?v=2">
+    <link rel="apple-touch-icon" href="./media/favicon-180.png?v=2">
 
     <!-- las fuentes viven en /fonts (no dependen de Google) -->
     <link rel="preload" href="./fonts/archivo-black-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=15">
+    <link rel="stylesheet" href="style.css?v=19">
 </head>
 
 <body>
@@ -63,6 +64,17 @@
         </section>
 
 
+        <!-- ========== BIO ========== -->
+        <section class="bio" aria-labelledby="bio-titulo">
+            <img class="bio__foto" src="./media/open-show-q-lokura.jpg" alt="" loading="lazy">
+            <div class="bio__contenido reveal">
+            <p class="label" id="bio-titulo">Bio</p>
+            <p class="bio__grande">DJ open format de Mendoza, Argentina, con el cachengue como género principal y una lectura de pista que funciona igual en un boliche lleno que en un casamiento.</p>
+            <p class="bio__chica">Tocó en festivales como la Vendimia de la Ciudad de Mendoza y Rivadavia le canta al País, en Teatro Vorterix con Fiesta Plop! y Fiesta Puerca, y afuera en Sala del Museo (Montevideo), Hollywood (Viña del Mar) y LongBeach (Reñaca). Hoy es residente en Bardo en la Bodega, y pasó por Wabi Fun Club, Bosco Sunset, Black Jagger, Roble Wake Park, Chirolas, Fronteo y Grita Silencio, entre otros.</p>
+            </div>
+        </section>
+
+
         <!-- ========== ABRIÓ PARA ========== -->
         <section class="artistas" aria-labelledby="artistas-titulo">
             <p class="label" id="artistas-titulo">Abrió para</p>
@@ -75,20 +87,6 @@
                 <li class="reveal">Pijama Party</li>
                 <li class="reveal">DesaKTa2</li>
             </ul>
-        </section>
-
-
-        <!-- ========== FOTO QUE SE AGRANDA AL SCROLLEAR ========== -->
-        <section class="expand" aria-label="Open show en el escenario">
-            <div class="expand__sticky">
-                <p class="expand__texto" aria-hidden="true">
-                    <span>Pistas</span>
-                    <span class="outline">grandes</span>
-                </p>
-                <div class="expand__media">
-                    <img src="./media/open-show-q-lokura.jpg" alt="Tomas Fortte en el escenario con su nombre en la pantalla gigante" loading="lazy">
-                </div>
-            </div>
         </section>
 
 
@@ -177,26 +175,38 @@
         </section>
 
 
-        <!-- ========== BIO ========== -->
-        <section class="bio reveal" aria-labelledby="bio-titulo">
-            <p class="label" id="bio-titulo">Bio</p>
-            <p class="bio__grande">DJ open format de Mendoza, Argentina, con el cachengue como género principal y una lectura de pista que funciona igual en un boliche lleno que en un casamiento.</p>
-            <p class="bio__chica">Tocó en festivales como la Vendimia de la Ciudad de Mendoza y Rivadavia le canta al País, en Teatro Vorterix con Fiesta Plop! y Fiesta Puerca, y afuera en Sala del Museo (Montevideo), Hollywood (Viña del Mar) y LongBeach (Reñaca). Hoy es residente en Bardo en la Bodega, y pasó por Wabi Fun Club, Bosco Sunset, Black Jagger, Roble Wake Park, Chirolas, Fronteo y Grita Silencio, entre otros.</p>
-        </section>
-
-
-        <!-- ========== BOOKING ========== -->
+        <!-- ========== BOOKING / CONTACTO ========== -->
         <section class="booking" id="booking" aria-labelledby="booking-titulo">
-            <h2 class="booking__titulo reveal" id="booking-titulo">
-                <span>Booking</span>
-                <span class="outline">abierto</span>
-            </h2>
-            <div class="booking__datos reveal">
-                <p>Contame fecha, lugar y tipo de evento, y te respondo con disponibilidad.</p>
+            <div class="booking__izq reveal">
+                <p class="label">Booking</p>
+                <h2 class="booking__titulo" id="booking-titulo">Hablemos<br>de tu fecha.</h2>
+                <p class="booking__texto">Contame fecha, lugar y tipo de evento, y te respondo con disponibilidad.</p>
                 <a href="https://wa.me/5491125194491" class="btn btn--solid btn--grande" target="_blank" rel="noopener">Escribime por WhatsApp</a>
-                <a href="mailto:bookingbytoms@gmail.com" class="booking__mail">bookingbytoms@gmail.com</a>
-                <a href="https://instagram.com/tomasfortte" class="booking__mail" target="_blank" rel="noopener">Instagram @tomasfortte</a>
             </div>
+
+            <ul class="booking__lista reveal">
+                <li>
+                    <a href="https://wa.me/5491125194491" target="_blank" rel="noopener">
+                        <span class="booking__num">01</span>
+                        <span class="booking__dato"><small>WhatsApp</small>+54 9 11 2519 4491</span>
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:bookingbytoms@gmail.com">
+                        <span class="booking__num">02</span>
+                        <span class="booking__dato"><small>Mail</small>bookingbytoms@gmail.com</span>
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://instagram.com/tomasfortte" target="_blank" rel="noopener">
+                        <span class="booking__num">03</span>
+                        <span class="booking__dato"><small>Instagram</small>@tomasfortte</span>
+                        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                    </a>
+                </li>
+            </ul>
         </section>
 
     </main>
@@ -208,6 +218,6 @@
         <p>© <span id="anio">2026</span> Tomas Fortte · Mendoza, Argentina</p>
     </footer>
 
-    <script src="./main.js?v=16"></script>
+    <script src="./main.js?v=17"></script>
 </body>
 </html>
