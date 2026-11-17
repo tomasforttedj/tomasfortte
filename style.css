@@ -601,38 +601,6 @@ h1, h2 {
 }
 
 
-/* ---------- 2. cinta que corre sin fin ---------- */
-
-.cinta {
-    background: var(--fg);
-    color: var(--bg);
-    overflow: hidden;
-    transform: rotate(-2deg);
-    width: 106%;
-    margin: 0 -3%;
-    position: relative;
-    z-index: 2;
-}
-
-.cinta__track {
-    display: flex;
-    width: max-content;
-    gap: 32px;
-    padding: 18px 0;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: clamp(22px, 3vw, 40px);
-    text-transform: uppercase;
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-    animation: correr 28s linear infinite;
-}
-
-@keyframes correr {
-    to { transform: translateX(-50%); }
-}
-
-
 /* ---------- 3. lista de artistas: entra de a uno ---------- */
 
 .js .artistas__lista li.reveal {
@@ -725,7 +693,7 @@ h1, h2 {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
     .js .hero__title .char { transform: none; animation: none; }
-    .hero__video, .cinta__track { animation: none; }
+    .hero__video { animation: none; }
     .expand { height: auto; --p: 0.45; }
     .expand__sticky { position: relative; }
     .puerta__media img { transform: none; }
