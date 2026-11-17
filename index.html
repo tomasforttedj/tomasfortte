@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomas Fortte — DJ Open Format · Mendoza</title>
-    <meta name="description" content="Tomas Fortte, DJ open format de Mendoza. Cachengue y pop para boliches, festivales y eventos privados. Abrió para Abel Pintos, Diego Torres, L-Gante, Q' Lokura y DesaKTa2.">
+    <meta name="description" content="Tomas Fortte, DJ open format de Mendoza con el cachengue como género principal. Boliches, festivales y eventos privados. Abrió para Abel Pintos, Diego Torres, L-Gante, Q' Lokura y DesaKTa2.">
     <meta property="og:title" content="Tomas Fortte — DJ Open Format">
     <meta property="og:description" content="Boliches, festivales y eventos privados. Booking abierto.">
     <meta property="og:image" content="https://tomasfortte.com/media/open-show-q-lokura.jpg">
@@ -15,8 +15,8 @@
     <link rel="apple-touch-icon" href="./media/favicon-180.png">
 
     <!-- las fuentes viven en /fonts (no dependen de Google) -->
-    <link rel="preload" href="./fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="preload" href="./fonts/archivo-black-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
     <!-- ========== HEADER ========== -->
     <header class="header">
         <a href="#inicio" class="header__logo" aria-label="Tomas Fortte, volver al inicio">
-            <img src="./media/icon-tomas-blanco-recorte.png" alt="" width="56" height="30">
+            <img src="./media/logo-tomas-blanco-recorte.png" alt="" width="97" height="40">
         </a>
 
         <button class="header__menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
@@ -43,18 +43,20 @@
         <!-- ========== HERO ========== -->
         <section class="hero" id="inicio">
             <video class="hero__video"
-                src="https://res.cloudinary.com/dmoui89wo/video/upload/v1777016810/tomi_fortte_screen_2_cybvvx.mp4"
-                poster="./media/open-show-q-lokura.jpg"
+                data-horizontal="./media/hero-horizontal.mp4"
+                data-vertical="./media/hero-vertical.mp4"
+                data-poster-horizontal="./media/hero-horizontal-poster.jpg"
+                data-poster-vertical="./media/hero-vertical-poster.jpg"
                 autoplay loop muted playsinline></video>
+            <div class="hero__grano" aria-hidden="true"></div>
 
             <div class="hero__content">
                 <p class="hero__tag">DJ — Open Format</p>
-                <h1 class="hero__title">
-                    <span>Tomas</span>
-                    <span class="outline">Fortte</span>
+                <h1 class="hero__title" aria-label="Tomas Fortte">
+                    <span class="split" aria-hidden="true">Tomas Fortte</span>
                 </h1>
                 <div class="hero__bottom">
-                    <p>Cachengue y pop para pistas grandes.<br>Mendoza, Argentina — tocando en AR, CL y UY.</p>
+                    <p>Open format, con el cachengue como género principal.<br>Mendoza, Argentina — tocando en AR, CL y UY.</p>
                     <a href="#booking" class="btn btn--solid">Consultar fecha</a>
                 </div>
             </div>
@@ -62,17 +64,31 @@
 
 
         <!-- ========== ABRIÓ PARA ========== -->
-        <section class="artistas reveal" aria-labelledby="artistas-titulo">
+        <section class="artistas" aria-labelledby="artistas-titulo">
             <p class="label" id="artistas-titulo">Abrió para</p>
             <ul class="artistas__lista">
-                <li>Abel Pintos</li>
-                <li>Diego Torres</li>
-                <li>L-Gante</li>
-                <li>Q' Lokura</li>
-                <li>Dame 5</li>
-                <li>Pijama Party</li>
-                <li>DesaKTa2</li>
+                <li class="reveal">Abel Pintos</li>
+                <li class="reveal">Diego Torres</li>
+                <li class="reveal">L-Gante</li>
+                <li class="reveal">Q' Lokura</li>
+                <li class="reveal">Dame 5</li>
+                <li class="reveal">Pijama Party</li>
+                <li class="reveal">DesaKTa2</li>
             </ul>
+        </section>
+
+
+        <!-- ========== FOTO QUE SE AGRANDA AL SCROLLEAR ========== -->
+        <section class="expand" aria-label="Open show en el escenario">
+            <div class="expand__sticky">
+                <p class="expand__texto" aria-hidden="true">
+                    <span>Pistas</span>
+                    <span class="outline">grandes</span>
+                </p>
+                <div class="expand__media">
+                    <img src="./media/open-show-q-lokura.jpg" alt="Tomas Fortte en el escenario con su nombre en la pantalla gigante" loading="lazy">
+                </div>
+            </div>
         </section>
 
 
@@ -97,7 +113,9 @@
         <section class="puertas" aria-label="Qué tipo de evento tenés">
 
             <article class="puerta puerta--dark reveal" id="boliches">
-                <img src="./media/vorterix-fiesta-plop.jpg" alt="Tomas Fortte en cabina frente a la pantalla de Fiesta Plop en Teatro Vorterix" loading="lazy">
+                <div class="puerta__media">
+                    <img class="parallax" src="./media/vorterix-fiesta-plop.jpg" alt="Tomas Fortte en cabina frente a la pantalla de Fiesta Plop en Teatro Vorterix" loading="lazy">
+                </div>
                 <div class="puerta__texto">
                     <p class="label">Para productores</p>
                     <h2>Boliches<br>y festivales</h2>
@@ -111,7 +129,9 @@
             </article>
 
             <article class="puerta puerta--light reveal" id="privados">
-                <img src="./media/fiesta-cabina.jpg" alt="Tomas Fortte en cabina festejando con invitados de la fiesta" loading="lazy">
+                <div class="puerta__media">
+                    <img class="parallax" src="./media/fiesta-cabina.jpg" alt="Tomas Fortte en cabina festejando con invitados de la fiesta" loading="lazy">
+                </div>
                 <div class="puerta__texto">
                     <p class="label">Para tu fiesta</p>
                     <h2>Eventos<br>privados</h2>
@@ -160,7 +180,7 @@
         <!-- ========== BIO ========== -->
         <section class="bio reveal" aria-labelledby="bio-titulo">
             <p class="label" id="bio-titulo">Bio</p>
-            <p class="bio__grande">DJ de Mendoza, Argentina. Cachengue mezclado con pop comercial, y una lectura de pista que funciona igual en un boliche lleno que en un casamiento.</p>
+            <p class="bio__grande">DJ open format de Mendoza, Argentina, con el cachengue como género principal y una lectura de pista que funciona igual en un boliche lleno que en un casamiento.</p>
             <p class="bio__chica">Tocó en festivales como la Vendimia de la Ciudad de Mendoza y Rivadavia le canta al País, en Teatro Vorterix con Fiesta Plop! y Fiesta Puerca, y afuera en Sala del Museo (Montevideo), Hollywood (Viña del Mar) y LongBeach (Reñaca). Hoy es residente en Bardo en la Bodega, y pasó por Wabi Fun Club, Bosco Sunset, Black Jagger, Roble Wake Park, Chirolas, Fronteo y Grita Silencio, entre otros.</p>
         </section>
 
@@ -188,6 +208,6 @@
         <p>© <span id="anio">2026</span> Tomas Fortte · Mendoza, Argentina</p>
     </footer>
 
-    <script src="./main.js?v=2"></script>
+    <script src="./main.js?v=13"></script>
 </body>
 </html>

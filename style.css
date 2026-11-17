@@ -9,6 +9,7 @@
 @font-face { font-family: "Unbounded"; font-weight: 600; font-display: swap; src: url("fonts/unbounded-600.woff2") format("woff2"); }
 @font-face { font-family: "Unbounded"; font-weight: 800; font-display: swap; src: url("fonts/unbounded-800.woff2") format("woff2"); }
 @font-face { font-family: "Unbounded"; font-weight: 900; font-display: swap; src: url("fonts/unbounded-900.woff2") format("woff2"); }
+@font-face { font-family: "Archivo Black"; font-weight: 400; font-display: swap; src: url("fonts/archivo-black-400.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url("fonts/inter-400.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 500; font-display: swap; src: url("fonts/inter-500.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url("fonts/inter-600.woff2") format("woff2"); }
@@ -165,7 +166,7 @@ h1, h2 {
 }
 
 .header__logo img {
-    height: 30px;
+    height: 40px;
     width: auto;
 }
 
@@ -217,13 +218,33 @@ h1, h2 {
     z-index: -2;
 }
 
-/* oscurece el video abajo para que el nombre se lea siempre */
+/* oscurece el video abajo para que el nombre se lea siempre, y viñeta en los bordes (look de cine) */
 .hero::after {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(to bottom, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.25) 40%, rgba(10,10,10,0.95) 100%);
+    background:
+        radial-gradient(ellipse at 50% 45%, transparent 45%, rgba(0,0,0,0.6) 100%),
+        linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.95) 100%);
+}
+
+/* grano de película arriba del video: disimula la compresión y le da textura */
+.hero__grano {
+    position: absolute;
+    inset: -50%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.14;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: grano 0.6s steps(3) infinite;
+}
+
+@keyframes grano {
+    0%   { transform: translate(0, 0); }
+    33%  { transform: translate(-5%, 3%); }
+    66%  { transform: translate(4%, -4%); }
+    100% { transform: translate(0, 0); }
 }
 
 .hero__content {
@@ -238,18 +259,18 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
+/* el nombre va en una sola línea, con Archivo Black */
 .hero__title {
-    font-weight: 900;
-    font-size: clamp(44px, 8.5vw, 140px);
-    line-height: 0.88;
+    font-family: "Archivo Black", var(--font-body);
+    font-weight: 400;
+    font-size: clamp(34px, 9.6vw, 165px);
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
 }
 
 .hero__title span {
     display: block;
-}
-
-.hero__title .outline {
-    -webkit-text-stroke-width: clamp(1.5px, 0.25vw, 3px);
 }
 
 .hero__bottom {
@@ -353,10 +374,17 @@ h1, h2 {
     min-height: 680px;
 }
 
-.puerta img {
+.puerta__media {
+    overflow: hidden;
+    position: relative;
+}
+
+.puerta__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: translateY(var(--y, 0px)) scale(1.15);
+    will-change: transform;
 }
 
 .puerta__texto {
@@ -388,7 +416,7 @@ h1, h2 {
 }
 
 /* en la clara, la foto va a la derecha para que las dos puertas se crucen */
-.puerta--light img {
+.puerta--light .puerta__media {
     order: 2;
 }
 
@@ -560,6 +588,113 @@ h1, h2 {
 }
 
 
+/* =========================================================
+   MOVIMIENTO
+   ========================================================= */
+
+/* ---------- 1. el nombre del hero entra letra por letra ---------- */
+
+.hero__title .split {
+    overflow: hidden;
+    padding-bottom: 0.06em;
+}
+
+.js .hero__title .char {
+    display: inline-block;
+    transform: translateY(105%);
+    animation: subir 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: calc(var(--i) * 55ms + 150ms);
+}
+
+@keyframes subir {
+    to { transform: none; }
+}
+
+/* el video arranca un poco más cerca y se aleja despacio */
+.hero__video {
+    animation: alejar 2.4s ease-out both;
+}
+
+@keyframes alejar {
+    from { transform: scale(1.12); }
+    to { transform: scale(1); }
+}
+
+
+/* ---------- 3. lista de artistas: entra de a uno ---------- */
+
+.js .artistas__lista li.reveal {
+    transform: translateX(-40px);
+}
+
+
+/* ---------- 4. foto que se agranda al scrollear (estilo Garrix) ---------- */
+/* main.js calcula --p: 0 cuando la sección entra, 1 cuando la foto ya ocupa toda la pantalla */
+
+.expand {
+    height: 260vh;
+    position: relative;
+    --p: 0;
+}
+
+.expand__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+.expand__texto {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(56px, 14vw, 240px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.expand__texto .outline {
+    -webkit-text-stroke-width: clamp(1.5px, 0.25vw, 3px);
+}
+
+.expand__media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    /* recorte: arranca como una tarjeta chica en el centro y se abre hasta los bordes */
+    clip-path: inset(calc((1 - var(--p)) * 30%) calc((1 - var(--p)) * 36%));
+}
+
+.expand__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 35% 50%;
+    transform: scale(calc(1.25 - var(--p) * 0.25));
+}
+
+@media (max-width: 600px) {
+    .expand__texto {
+        font-size: 13vw;
+        justify-content: flex-start;
+        padding-top: 14vh;
+    }
+
+    .expand__media {
+        clip-path: inset(calc((1 - var(--p)) * 38%) calc((1 - var(--p)) * 14%) calc((1 - var(--p)) * 22%));
+    }
+}
+
+
 /* ---------- animación de aparición al scrollear ---------- */
 /* solo se activa si hay JavaScript (main.js le pone la clase "js" al <html>) */
 
@@ -577,6 +712,11 @@ h1, h2 {
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
+    .js .hero__title .char { transform: none; animation: none; }
+    .hero__video, .hero__grano { animation: none; }
+    .expand { height: auto; --p: 0.45; }
+    .expand__sticky { position: relative; }
+    .puerta__media img { transform: none; }
 }
 
 
@@ -628,12 +768,12 @@ h1, h2 {
         min-height: 0;
     }
 
-    .puerta img {
+    .puerta__media {
         height: 60vw;
         max-height: 480px;
     }
 
-    .puerta--light img {
+    .puerta--light .puerta__media {
         order: 0;
     }
 }
@@ -641,7 +781,7 @@ h1, h2 {
 @media (max-width: 600px) {
 
     .hero__title {
-        font-size: 13vw;
+        font-size: 10vw;
     }
 
     .galeria__track img {
@@ -659,4 +799,8 @@ h1, h2 {
     .booking__datos .btn {
         width: 100%;
     }
+}
+
+.js .artistas__lista li.reveal.visible {
+    transform: none;
 }
