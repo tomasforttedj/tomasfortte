@@ -165,7 +165,7 @@ h1, h2 {
 }
 
 .header__logo img {
-    height: 30px;
+    height: 40px;
     width: auto;
 }
 
@@ -353,10 +353,17 @@ h1, h2 {
     min-height: 680px;
 }
 
-.puerta img {
+.puerta__media {
+    overflow: hidden;
+    position: relative;
+}
+
+.puerta__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: translateY(var(--y, 0px)) scale(1.15);
+    will-change: transform;
 }
 
 .puerta__texto {
@@ -388,7 +395,7 @@ h1, h2 {
 }
 
 /* en la clara, la foto va a la derecha para que las dos puertas se crucen */
-.puerta--light img {
+.puerta--light .puerta__media {
     order: 2;
 }
 
@@ -560,6 +567,145 @@ h1, h2 {
 }
 
 
+/* =========================================================
+   MOVIMIENTO
+   ========================================================= */
+
+/* ---------- 1. el nombre del hero entra letra por letra ---------- */
+
+.hero__title .split {
+    overflow: hidden;
+    padding-bottom: 0.06em;
+}
+
+.js .hero__title .char {
+    display: inline-block;
+    transform: translateY(105%);
+    animation: subir 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: calc(var(--i) * 55ms + 150ms);
+}
+
+@keyframes subir {
+    to { transform: none; }
+}
+
+/* el video arranca un poco más cerca y se aleja despacio */
+.hero__video {
+    animation: alejar 2.4s ease-out both;
+}
+
+@keyframes alejar {
+    from { transform: scale(1.12); }
+    to { transform: scale(1); }
+}
+
+
+/* ---------- 2. cinta que corre sin fin ---------- */
+
+.cinta {
+    background: var(--fg);
+    color: var(--bg);
+    overflow: hidden;
+    transform: rotate(-2deg);
+    width: 106%;
+    margin: 0 -3%;
+    position: relative;
+    z-index: 2;
+}
+
+.cinta__track {
+    display: flex;
+    width: max-content;
+    gap: 32px;
+    padding: 18px 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(22px, 3vw, 40px);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    animation: correr 28s linear infinite;
+}
+
+@keyframes correr {
+    to { transform: translateX(-50%); }
+}
+
+
+/* ---------- 3. lista de artistas: entra de a uno ---------- */
+
+.js .artistas__lista li.reveal {
+    transform: translateX(-40px);
+}
+
+
+/* ---------- 4. foto que se agranda al scrollear (estilo Garrix) ---------- */
+/* main.js calcula --p: 0 cuando la sección entra, 1 cuando la foto ya ocupa toda la pantalla */
+
+.expand {
+    height: 260vh;
+    position: relative;
+    --p: 0;
+}
+
+.expand__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+}
+
+.expand__texto {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(56px, 14vw, 240px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.expand__texto .outline {
+    -webkit-text-stroke-width: clamp(1.5px, 0.25vw, 3px);
+}
+
+.expand__media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    /* recorte: arranca como una tarjeta chica en el centro y se abre hasta los bordes */
+    clip-path: inset(calc((1 - var(--p)) * 30%) calc((1 - var(--p)) * 36%));
+}
+
+.expand__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 35% 50%;
+    transform: scale(calc(1.25 - var(--p) * 0.25));
+}
+
+@media (max-width: 600px) {
+    .expand__texto {
+        font-size: 13vw;
+        justify-content: flex-start;
+        padding-top: 14vh;
+    }
+
+    .expand__media {
+        clip-path: inset(calc((1 - var(--p)) * 38%) calc((1 - var(--p)) * 14%) calc((1 - var(--p)) * 22%));
+    }
+}
+
+
 /* ---------- animación de aparición al scrollear ---------- */
 /* solo se activa si hay JavaScript (main.js le pone la clase "js" al <html>) */
 
@@ -577,6 +723,11 @@ h1, h2 {
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
+    .js .hero__title .char { transform: none; animation: none; }
+    .hero__video, .cinta__track { animation: none; }
+    .expand { height: auto; --p: 0.45; }
+    .expand__sticky { position: relative; }
+    .puerta__media img { transform: none; }
 }
 
 
@@ -628,12 +779,12 @@ h1, h2 {
         min-height: 0;
     }
 
-    .puerta img {
+    .puerta__media {
         height: 60vw;
         max-height: 480px;
     }
 
-    .puerta--light img {
+    .puerta--light .puerta__media {
         order: 0;
     }
 }
@@ -659,4 +810,8 @@ h1, h2 {
     .booking__datos .btn {
         width: 100%;
     }
+}
+
+.js .artistas__lista li.reveal.visible {
+    transform: none;
 }

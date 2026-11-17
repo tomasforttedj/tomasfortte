@@ -99,6 +99,71 @@ galeria.addEventListener('mousemove', function (e) {
 })
 
 
-// ---------- 5. Año del footer, siempre actualizado ----------
+// ---------- 5. El nombre del hero entra letra por letra ----------
+// Parte cada palabra en letras sueltas (<span class="char">) y le da a cada una
+// un número (--i) para que el CSS las haga entrar una atrás de la otra.
+
+document.querySelectorAll('.split').forEach(function (palabra) {
+    const letras = palabra.textContent.trim().split('')
+    palabra.textContent = ''
+    letras.forEach(function (letra, i) {
+        const span = document.createElement('span')
+        span.className = 'char'
+        span.textContent = letra
+        span.style.setProperty('--i', i + (palabra.classList.contains('outline') ? 5 : 0))
+        palabra.appendChild(span)
+    })
+})
+
+
+// ---------- 6. Artistas: entran de a uno, con un pequeño retraso cada uno ----------
+
+document.querySelectorAll('.artistas__lista li').forEach(function (li, i) {
+    li.style.transitionDelay = (i * 70) + 'ms'
+})
+
+
+// ---------- 7. Movimientos atados al scroll (estilo Apple) ----------
+// Una sola función que corre en cada frame mientras scrolleás:
+// a) la foto grande se abre según cuánto bajaste (--p va de 0 a 1)
+// b) las fotos de las puertas se mueven un poco más lento que la página (parallax)
+
+const expand = document.querySelector('.expand')
+const parallaxFotos = document.querySelectorAll('.parallax')
+const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+let pedido = false
+
+function actualizarScroll() {
+    pedido = false
+    const alto = window.innerHeight
+
+    if (expand) {
+        const caja = expand.getBoundingClientRect()
+        const recorrido = caja.height - alto
+        let p = -caja.top / (recorrido * 0.75)
+        p = Math.min(Math.max(p, 0), 1)
+        expand.style.setProperty('--p', p.toFixed(3))
+    }
+
+    parallaxFotos.forEach(function (foto) {
+        const caja = foto.parentElement.getBoundingClientRect()
+        if (caja.bottom < 0 || caja.top > alto) return
+        const centro = caja.top + caja.height / 2 - alto / 2
+        foto.style.setProperty('--y', (centro * -0.12).toFixed(1) + 'px')
+    })
+}
+
+if (!sinMovimiento) {
+    window.addEventListener('scroll', function () {
+        if (!pedido) {
+            pedido = true
+            requestAnimationFrame(actualizarScroll)
+        }
+    }, { passive: true })
+    actualizarScroll()
+}
+
+
+// ---------- 8. Año del footer, siempre actualizado ----------
 
 document.querySelector('#anio').textContent = new Date().getFullYear()
