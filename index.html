@@ -16,7 +16,7 @@
 
     <!-- las fuentes viven en /fonts (no dependen de Google) -->
     <link rel="preload" href="./fonts/archivo-black-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=11">
 </head>
 
 <body>
@@ -43,10 +43,8 @@
         <!-- ========== HERO ========== -->
         <section class="hero" id="inicio">
             <video class="hero__video"
-                data-horizontal="./media/hero-horizontal.mp4"
-                data-vertical="./media/hero-vertical.mp4"
-                data-poster-horizontal="./media/hero-horizontal-poster.jpg"
-                data-poster-vertical="./media/hero-vertical-poster.jpg"
+                src="./media/hero.mp4"
+                poster="./media/hero-poster.jpg"
                 autoplay loop muted playsinline></video>
             <div class="hero__grano" aria-hidden="true"></div>
 
@@ -208,6 +206,6 @@
         <p>© <span id="anio">2026</span> Tomas Fortte · Mendoza, Argentina</p>
     </footer>
 
-    <script src="./main.js?v=10"></script>
+    <script src="./main.js?v=11"></script>
 </body>
 </html>
