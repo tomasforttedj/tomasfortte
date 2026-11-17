@@ -554,7 +554,7 @@ h1, h2 {
 }
 
 
-/* ---------- playlists: CDs girando (visuales Y2K), uno por playlist ---------- */
+/* ---------- playlists: elegís una playlist y gira su CD ---------- */
 
 .playlists {
     padding: clamp(80px, 12vw, 160px) var(--pad);
@@ -565,66 +565,99 @@ h1, h2 {
     font-size: clamp(40px, 7vw, 112px);
 }
 
-.playlists__grid {
-    margin-top: clamp(40px, 6vw, 80px);
+.selector__cuerpo {
+    margin-top: clamp(40px, 5vw, 64px);
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(32px, 5vw, 72px);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 80px);
+    align-items: center;
 }
 
-.cd__video {
+.selector__cd {
     width: 100%;
+    max-width: 600px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    /* el fondo gris oscuro del video se funde con el negro de la página */
+    justify-self: center;
     mix-blend-mode: lighten;
 }
 
-.cd__info {
-    margin-top: 8px;
-    border-top: 1px solid var(--line);
-    padding-top: 24px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 20px;
-    row-gap: 8px;
-    align-items: baseline;
+.selector__panel {
+    min-width: 0;
 }
 
-.cd__num {
+.pl-lista {
+    border-top: 1px solid var(--line);
+}
+
+.pl-fila {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 16px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    color: var(--fg);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+}
+
+.pl-fila:hover {
+    background: #161616;
+}
+
+.pl-fila.activa {
+    background: var(--fg);
+    color: var(--bg);
+}
+
+.pl-num {
     font-family: var(--font-display);
     font-weight: 600;
     font-size: 14px;
-    color: var(--muted);
+    opacity: 0.6;
 }
 
-.cd__titulo {
+.pl-dato {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pl-dato b {
     font-family: "Archivo Black", var(--font-display);
     font-weight: 400;
-    font-size: clamp(32px, 4vw, 56px);
+    font-size: clamp(26px, 3vw, 44px);
     line-height: 1;
-    letter-spacing: -0.02em;
     text-transform: uppercase;
 }
 
-.cd__desc,
-.cd__link {
-    grid-column: 2;
+.pl-dato small {
+    font-family: var(--font-body);
+    font-size: 14px;
+    opacity: 0.7;
 }
 
-.cd__desc {
-    color: var(--muted);
-    font-size: 15px;
+.pl-estado {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
 }
 
-.cd__link {
-    margin-top: 12px;
-    justify-self: start;
+.pl-link {
+    margin-top: 28px;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    min-height: 44px;
-    padding: 0 20px;
+    min-height: 48px;
+    padding: 0 22px;
     border: 1px solid var(--fg);
     font-size: 13px;
     font-weight: 600;
@@ -633,7 +666,7 @@ h1, h2 {
     transition: background 0.25s, color 0.25s;
 }
 
-.cd__link:hover {
+.pl-link:hover {
     background: var(--fg);
     color: var(--bg);
 }
@@ -867,8 +900,21 @@ h1, h2 {
         align-items: start;
     }
 
-    .playlists__grid {
+    .selector__cuerpo {
         grid-template-columns: 1fr;
+    }
+
+    .selector__cd {
+        max-width: 340px;
+    }
+
+    .pl-fila {
+        gap: 12px;
+        padding: 18px 10px;
+    }
+
+    .pl-estado {
+        font-size: 11px;
     }
 }
 
