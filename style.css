@@ -10,6 +10,7 @@
 @font-face { font-family: "Unbounded"; font-weight: 800; font-display: swap; src: url("fonts/unbounded-800.woff2") format("woff2"); }
 @font-face { font-family: "Unbounded"; font-weight: 900; font-display: swap; src: url("fonts/unbounded-900.woff2") format("woff2"); }
 @font-face { font-family: "Archivo Black"; font-weight: 400; font-display: swap; src: url("fonts/archivo-black-400.woff2") format("woff2"); }
+@font-face { font-family: "VT323"; font-weight: 400; font-display: swap; src: url("fonts/vt323-400.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url("fonts/inter-400.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 500; font-display: swap; src: url("fonts/inter-500.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url("fonts/inter-600.woff2") format("woff2"); }
@@ -554,7 +555,7 @@ h1, h2 {
 }
 
 
-/* ---------- playlists: CDs girando (visuales Y2K), uno por playlist ---------- */
+/* ---------- playlists: ventana estilo Windows 98 con el CD girando y el reproductor de Spotify ---------- */
 
 .playlists {
     padding: clamp(80px, 12vw, 160px) var(--pad);
@@ -565,77 +566,165 @@ h1, h2 {
     font-size: clamp(40px, 7vw, 112px);
 }
 
-.playlists__grid {
-    margin-top: clamp(40px, 6vw, 80px);
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(32px, 5vw, 72px);
+/* bordes en relieve: claro arriba/izquierda, oscuro abajo/derecha (el truco de Windows 98) */
+.ventana {
+    margin-top: clamp(40px, 5vw, 64px);
+    background: #c0c0c0;
+    padding: 4px;
+    border-top: 2px solid #dfdfdf;
+    border-left: 2px solid #dfdfdf;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    font-family: "VT323", monospace;
+    color: #000;
 }
 
-.cd__video {
+.ventana__barra {
+    min-height: 34px;
+    padding: 0 6px 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: #fff;
+    font-size: 22px;
+}
+
+.ventana__barra > span:first-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ventana__botones {
+    display: flex;
+    gap: 4px;
+}
+
+.ventana__botones i {
+    width: 22px;
+    height: 20px;
+    display: grid;
+    place-items: center;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+    background: #c0c0c0;
+    color: #000;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+}
+
+.ventana__menu {
+    display: flex;
+    gap: 18px;
+    padding: 4px 10px;
+    font-size: 20px;
+}
+
+.ventana__cuerpo {
+    background: #000;
+    border-top: 2px solid #404040;
+    border-left: 2px solid #404040;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    padding: clamp(20px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    color: var(--fg);
+}
+
+.ventana__cd {
     width: 100%;
+    max-width: 560px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    /* el fondo gris oscuro del video se funde con el negro de la página */
-    mix-blend-mode: lighten;
+    justify-self: center;
 }
 
-.cd__info {
-    margin-top: 8px;
+.ventana__panel {
+    min-width: 0;
+}
+
+.pl-lista {
     border-top: 1px solid var(--line);
-    padding-top: 24px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 20px;
-    row-gap: 8px;
-    align-items: baseline;
 }
 
-.cd__num {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--muted);
-}
-
-.cd__titulo {
-    font-family: "Archivo Black", var(--font-display);
-    font-weight: 400;
-    font-size: clamp(32px, 4vw, 56px);
-    line-height: 1;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-}
-
-.cd__desc,
-.cd__link {
-    grid-column: 2;
-}
-
-.cd__desc {
-    color: var(--muted);
-    font-size: 15px;
-}
-
-.cd__link {
-    margin-top: 12px;
-    justify-self: start;
-    display: inline-flex;
+.pl-fila {
+    width: 100%;
+    display: flex;
     align-items: center;
-    gap: 10px;
-    min-height: 44px;
-    padding: 0 20px;
-    border: 1px solid var(--fg);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    gap: 20px;
+    padding: 22px 16px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    color: var(--fg);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
     transition: background 0.25s, color 0.25s;
 }
 
-.cd__link:hover {
+.pl-fila:hover {
+    background: #161616;
+}
+
+.pl-fila.activa {
     background: var(--fg);
     color: var(--bg);
+}
+
+.pl-num {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.pl-dato {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.pl-dato b {
+    font-family: "Archivo Black", var(--font-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3vw, 44px);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.pl-dato small {
+    font-family: var(--font-body);
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.pl-estado {
+    font-family: "VT323", monospace;
+    font-size: 22px;
+}
+
+.pl-player {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    border: 0;
+    border-radius: 12px;
+}
+
+.ventana__estado {
+    padding: 4px 10px 0;
+    font-size: 20px;
 }
 
 
@@ -867,8 +956,29 @@ h1, h2 {
         align-items: start;
     }
 
-    .playlists__grid {
+    .ventana__cuerpo {
         grid-template-columns: 1fr;
+    }
+
+    .ventana__cd {
+        max-width: 320px;
+    }
+
+    .ventana__menu {
+        display: none;
+    }
+
+    .ventana__cuerpo {
+        padding: 16px;
+    }
+
+    .pl-fila {
+        gap: 12px;
+        padding: 18px 10px;
+    }
+
+    .pl-estado {
+        font-size: 18px;
     }
 }
 

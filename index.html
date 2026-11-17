@@ -17,7 +17,7 @@
 
     <!-- las fuentes viven en /fonts (no dependen de Google) -->
     <link rel="preload" href="./fonts/archivo-black-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=21">
+    <link rel="stylesheet" href="style.css?v=22">
 </head>
 
 <body>
@@ -175,31 +175,52 @@
         </section>
 
 
-        <!-- ========== PLAYLISTS ========== -->
+        <!-- ========== PLAYLISTS (ventana Y2K con reproductor) ========== -->
         <section class="playlists" id="playlists" aria-labelledby="playlists-titulo">
             <div class="playlists__head reveal">
                 <p class="label">Lo que suena</p>
                 <h2 id="playlists-titulo">Playlists</h2>
             </div>
-            <div class="playlists__grid">
-                <article class="cd reveal">
-                    <video class="cd__video" src="./media/cd-cachengue.mp4" poster="./media/cd-cachengue.jpg" autoplay loop muted playsinline aria-hidden="true"></video>
-                    <div class="cd__info">
-                        <span class="cd__num">01</span>
-                        <h3 class="cd__titulo">Cachengue</h3>
-                        <p class="cd__desc">Top 50 hits · 50 temas</p>
-                        <a href="https://open.spotify.com/playlist/5SGw1RMd0BtnpVQlDoyVtH" class="cd__link" target="_blank" rel="noopener">Escuchar en Spotify <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+
+            <div class="ventana reveal">
+                <div class="ventana__barra">
+                    <span>C:\TOMI_FORTTE\PLAYLISTS</span>
+                    <span class="ventana__botones" aria-hidden="true"><i>_</i><i>□</i><i>x</i></span>
+                </div>
+                <div class="ventana__menu" aria-hidden="true"><span>Archivo</span><span>Edición</span><span>Ver</span><span>Ayuda</span></div>
+
+                <div class="ventana__cuerpo">
+                    <video class="ventana__cd" src="./media/cd-cachengue.mp4" poster="./media/cd-cachengue.jpg" autoplay loop muted playsinline aria-hidden="true"></video>
+
+                    <div class="ventana__panel">
+                        <ul class="pl-lista">
+                            <li>
+                                <button class="pl-fila activa" aria-pressed="true"
+                                    data-cd="./media/cd-cachengue.mp4" data-poster="./media/cd-cachengue.jpg"
+                                    data-embed="https://open.spotify.com/embed/playlist/5SGw1RMd0BtnpVQlDoyVtH?theme=0">
+                                    <span class="pl-num">01</span>
+                                    <span class="pl-dato"><b>Cachengue</b><small>Top 50 hits · 50 temas</small></span>
+                                    <span class="pl-estado">Sonando</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button class="pl-fila" aria-pressed="false"
+                                    data-cd="./media/cd-pop.mp4" data-poster="./media/cd-pop.jpg"
+                                    data-embed="https://open.spotify.com/embed/playlist/5LNvvFE8JOerfvicLSkX68?theme=0">
+                                    <span class="pl-num">02</span>
+                                    <span class="pl-dato"><b>Pop</b><small>Hit list · 77 temas</small></span>
+                                    <span class="pl-estado">Escuchar</span>
+                                </button>
+                            </li>
+                        </ul>
+
+                        <iframe class="pl-player" title="Reproductor de Spotify"
+                            src="https://open.spotify.com/embed/playlist/5SGw1RMd0BtnpVQlDoyVtH?theme=0"
+                            height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                     </div>
-                </article>
-                <article class="cd reveal">
-                    <video class="cd__video" src="./media/cd-pop.mp4" poster="./media/cd-pop.jpg" autoplay loop muted playsinline aria-hidden="true"></video>
-                    <div class="cd__info">
-                        <span class="cd__num">02</span>
-                        <h3 class="cd__titulo">Pop</h3>
-                        <p class="cd__desc">Only hits · 77 temas</p>
-                        <a href="https://open.spotify.com/playlist/5LNvvFE8JOerfvicLSkX68" class="cd__link" target="_blank" rel="noopener">Escuchar en Spotify <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-                    </div>
-                </article>
+                </div>
+
+                <div class="ventana__estado" aria-hidden="true">2 objetos · 127 temas</div>
             </div>
         </section>
 
@@ -247,6 +268,6 @@
         <p>© <span id="anio">2026</span> Tomas Fortte · Mendoza, Argentina</p>
     </footer>
 
-    <script src="./main.js?v=20"></script>
+    <script src="./main.js?v=22"></script>
 </body>
 </html>
