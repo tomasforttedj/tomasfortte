@@ -7,6 +7,15 @@
 document.documentElement.classList.add('js')
 
 
+// ---------- 0. Video del hero: vertical en celular, horizontal en compu ----------
+// Elegimos UNA sola versión según la forma de la pantalla, así no se bajan las dos.
+
+const heroVideo = document.querySelector('.hero__video')
+const pantallaVertical = window.innerWidth / window.innerHeight < 0.85
+heroVideo.poster = pantallaVertical ? heroVideo.dataset.posterVertical : heroVideo.dataset.posterHorizontal
+heroVideo.src = pantallaVertical ? heroVideo.dataset.vertical : heroVideo.dataset.horizontal
+
+
 // ---------- 1. Header: se esconde al bajar, vuelve al subir ----------
 // (es tu lógica de antes, con un agregado: le pone fondo cuando ya no estás arriba de todo)
 
