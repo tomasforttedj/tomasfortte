@@ -554,6 +554,91 @@ h1, h2 {
 }
 
 
+/* ---------- playlists: CDs girando (visuales Y2K), uno por playlist ---------- */
+
+.playlists {
+    padding: clamp(80px, 12vw, 160px) var(--pad);
+}
+
+.playlists__head h2 {
+    margin-top: 16px;
+    font-size: clamp(40px, 7vw, 112px);
+}
+
+.playlists__grid {
+    margin-top: clamp(40px, 6vw, 80px);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(32px, 5vw, 72px);
+}
+
+.cd__video {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    /* el fondo gris oscuro del video se funde con el negro de la página */
+    mix-blend-mode: lighten;
+}
+
+.cd__info {
+    margin-top: 8px;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
+    row-gap: 8px;
+    align-items: baseline;
+}
+
+.cd__num {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.cd__titulo {
+    font-family: "Archivo Black", var(--font-display);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+.cd__desc,
+.cd__link {
+    grid-column: 2;
+}
+
+.cd__desc {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.cd__link {
+    margin-top: 12px;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 20px;
+    border: 1px solid var(--fg);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.25s, color 0.25s;
+}
+
+.cd__link:hover {
+    background: var(--fg);
+    color: var(--bg);
+}
+
+
 /* ---------- booking: título grande a la izquierda, datos numerados a la derecha ---------- */
 
 .booking {
@@ -780,6 +865,10 @@ h1, h2 {
     .booking {
         grid-template-columns: 1fr;
         align-items: start;
+    }
+
+    .playlists__grid {
+        grid-template-columns: 1fr;
     }
 }
 
