@@ -502,7 +502,7 @@ h1, h2 {
 /* ---------- bio ---------- */
 
 .bio {
-    padding: 0 var(--pad) clamp(80px, 12vw, 160px);
+    padding: clamp(96px, 12vw, 180px) var(--pad) 0;
     max-width: 1280px;
 }
 
@@ -525,49 +525,129 @@ h1, h2 {
 }
 
 
-/* ---------- booking ---------- */
+/* ---------- booking / contacto: una tarjeta con botón grande y lista de datos ---------- */
 
 .booking {
     padding: clamp(80px, 12vw, 160px) var(--pad);
-    border-top: 1px solid var(--line);
 }
 
-.booking__titulo {
-    font-weight: 900;
-    font-size: clamp(44px, 8.5vw, 140px);
-    line-height: 0.88;
+.contacto {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 72px);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: #0e0e0e;
 }
 
-.booking__titulo span {
-    display: block;
-}
-
-.booking__titulo .outline {
-    -webkit-text-stroke-width: clamp(1.5px, 0.25vw, 3px);
-}
-
-.booking__datos {
-    margin-top: 48px;
+.contacto__label {
     display: flex;
     align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
-}
-
-.booking__datos p {
-    flex-basis: 100%;
-    max-width: 520px;
+    gap: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     color: var(--muted);
 }
 
-.booking__mail {
-    font-size: 16px;
-    border-bottom: 1px solid var(--muted);
-    padding-bottom: 2px;
+.contacto__label span {
+    width: 40px;
+    height: 1px;
+    background: var(--muted);
 }
 
-.booking__mail:hover {
+.contacto__titulo {
+    margin-top: 24px;
+    font-size: clamp(48px, 8vw, 110px);
+    text-transform: none;
+}
+
+.contacto__texto {
+    margin-top: clamp(28px, 4vw, 48px);
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.contacto__boton {
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 76px;
+    padding: 0 24px;
+    border-radius: 16px;
+    background: var(--fg);
+    color: var(--bg);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-align: center;
+    transition: opacity 0.2s;
+}
+
+.contacto__boton:hover {
+    opacity: 0.88;
+}
+
+.contacto__lista {
+    margin-top: 24px;
+}
+
+.contacto__lista li {
+    border-top: 1px solid var(--line);
+}
+
+.contacto__lista a {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 0;
+}
+
+.contacto__icono {
+    flex: 0 0 auto;
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: border-color 0.2s;
+}
+
+.contacto__dato {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: clamp(17px, 2vw, 22px);
+    overflow-wrap: anywhere;
+}
+
+.contacto__dato small {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.contacto__flecha {
+    flex: 0 0 auto;
+    color: var(--muted);
+    transition: transform 0.2s, color 0.2s;
+}
+
+.contacto__lista a:hover .contacto__icono {
     border-color: var(--fg);
+}
+
+.contacto__lista a:hover .contacto__flecha {
+    color: var(--fg);
+    transform: translateX(4px);
 }
 
 
@@ -631,74 +711,6 @@ h1, h2 {
 }
 
 
-/* ---------- 4. foto que se agranda al scrollear (estilo Garrix) ---------- */
-/* main.js calcula --p: 0 cuando la sección entra, 1 cuando la foto ya ocupa toda la pantalla */
-
-.expand {
-    height: 260vh;
-    position: relative;
-    --p: 0;
-}
-
-.expand__sticky {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    height: 100svh;
-    overflow: hidden;
-    display: grid;
-    place-items: center;
-}
-
-.expand__texto {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: clamp(56px, 14vw, 240px);
-    line-height: 0.9;
-    letter-spacing: -0.04em;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.expand__texto .outline {
-    -webkit-text-stroke-width: clamp(1.5px, 0.25vw, 3px);
-}
-
-.expand__media {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    /* recorte: arranca como una tarjeta chica en el centro y se abre hasta los bordes */
-    clip-path: inset(calc((1 - var(--p)) * 30%) calc((1 - var(--p)) * 36%));
-}
-
-.expand__media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 35% 50%;
-    transform: scale(calc(1.25 - var(--p) * 0.25));
-}
-
-@media (max-width: 600px) {
-    .expand__texto {
-        font-size: 13vw;
-        justify-content: flex-start;
-        padding-top: 14vh;
-    }
-
-    .expand__media {
-        clip-path: inset(calc((1 - var(--p)) * 38%) calc((1 - var(--p)) * 14%) calc((1 - var(--p)) * 22%));
-    }
-}
-
-
 /* ---------- animación de aparición al scrollear ---------- */
 /* solo se activa si hay JavaScript (main.js le pone la clase "js" al <html>) */
 
@@ -718,8 +730,6 @@ h1, h2 {
     .js .reveal { opacity: 1; transform: none; transition: none; }
     .js .hero__title .char { transform: none; animation: none; }
     .hero__video, .hero__grano { animation: none; }
-    .expand { height: auto; --p: 0.45; }
-    .expand__sticky { position: relative; }
     .puerta__media img { transform: none; }
 }
 
@@ -800,8 +810,28 @@ h1, h2 {
         width: 100%;
     }
 
-    .booking__datos .btn {
-        width: 100%;
+    .contacto__boton {
+        letter-spacing: 0.1em;
+        font-size: 13px;
+    }
+
+    .contacto {
+        padding: 24px 20px;
+        border-radius: 22px;
+    }
+
+    .contacto__lista a {
+        gap: 14px;
+    }
+
+    .contacto__icono {
+        width: 44px;
+        height: 44px;
+    }
+
+    .contacto__dato {
+        font-size: 15px;
+        overflow-wrap: normal;
     }
 }
 
