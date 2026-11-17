@@ -709,27 +709,6 @@ h1, h2 {
     transform: none;
 }
 
-/* ---------- hero en compu: el video vertical va como una tarjeta grande a la derecha ---------- */
-@media (min-width: 901px) {
-    .hero__video {
-        left: auto;
-        right: var(--pad);
-        top: 104px;
-        bottom: 48px;
-        height: calc(100% - 152px);
-        width: auto;
-        aspect-ratio: 9 / 16;
-    }
-
-    .hero::after {
-        background: linear-gradient(to bottom, rgba(10,10,10,0) 55%, rgba(10,10,10,0.85) 100%);
-    }
-
-    .hero__grano {
-        display: none;
-    }
-}
-
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
