@@ -72,8 +72,8 @@ ul {
 h1, h2 {
     font-family: var(--font-display);
     font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
+    line-height: 1.02;
+    letter-spacing: -0.015em;
     text-transform: uppercase;
 }
 
@@ -304,8 +304,8 @@ h1, h2 {
     font-family: var(--font-display);
     font-weight: 800;
     font-size: clamp(36px, 7.5vw, 120px);
-    line-height: 1.1;
-    letter-spacing: -0.04em;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
     text-transform: uppercase;
     border-bottom: 1px solid var(--line);
     padding: 8px 0 4px;
@@ -327,7 +327,10 @@ h1, h2 {
 /* ---------- escenarios ---------- */
 
 .escenarios {
-    padding: 0 var(--pad) clamp(80px, 12vw, 160px);
+    position: relative;
+    z-index: 2;
+    background: var(--bg);
+    padding: clamp(96px, 12vw, 180px) var(--pad) clamp(80px, 12vw, 160px);
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     gap: 48px;
@@ -641,6 +644,7 @@ h1, h2 {
     position: sticky;
     top: 0;
     height: 100vh;
+    height: 100svh;
     overflow: hidden;
     display: grid;
     place-items: center;
