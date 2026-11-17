@@ -10,7 +10,6 @@
 @font-face { font-family: "Unbounded"; font-weight: 800; font-display: swap; src: url("fonts/unbounded-800.woff2") format("woff2"); }
 @font-face { font-family: "Unbounded"; font-weight: 900; font-display: swap; src: url("fonts/unbounded-900.woff2") format("woff2"); }
 @font-face { font-family: "Archivo Black"; font-weight: 400; font-display: swap; src: url("fonts/archivo-black-400.woff2") format("woff2"); }
-@font-face { font-family: "VT323"; font-weight: 400; font-display: swap; src: url("fonts/vt323-400.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url("fonts/inter-400.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 500; font-display: swap; src: url("fonts/inter-500.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url("fonts/inter-600.woff2") format("woff2"); }
@@ -555,7 +554,7 @@ h1, h2 {
 }
 
 
-/* ---------- playlists: ventana estilo Windows 98 con el CD girando y el reproductor de Spotify ---------- */
+/* ---------- playlists: CDs girando (visuales Y2K), uno por playlist ---------- */
 
 .playlists {
     padding: clamp(80px, 12vw, 160px) var(--pad);
@@ -566,181 +565,77 @@ h1, h2 {
     font-size: clamp(40px, 7vw, 112px);
 }
 
-/* bordes en relieve: claro arriba/izquierda, oscuro abajo/derecha (el truco de Windows 98) */
-.ventana {
-    margin-top: clamp(40px, 5vw, 64px);
-    background: #c0c0c0;
-    padding: 4px;
-    border-top: 2px solid #dfdfdf;
-    border-left: 2px solid #dfdfdf;
-    border-right: 2px solid #404040;
-    border-bottom: 2px solid #404040;
-    font-family: "VT323", monospace;
-    color: #000;
-}
-
-.ventana__barra {
-    min-height: 34px;
-    padding: 0 6px 0 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    background: linear-gradient(90deg, #000080, #1084d0);
-    color: #fff;
-    font-size: 22px;
-}
-
-.ventana__barra > span:first-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.ventana__botones {
-    display: flex;
-    gap: 4px;
-}
-
-.ventana__botones i {
-    width: 22px;
-    height: 20px;
+.playlists__grid {
+    margin-top: clamp(40px, 6vw, 80px);
     display: grid;
-    place-items: center;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 1;
-    background: #c0c0c0;
-    color: #000;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    border-right: 2px solid #404040;
-    border-bottom: 2px solid #404040;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(32px, 5vw, 72px);
 }
 
-.ventana__menu {
-    display: flex;
-    gap: 18px;
-    padding: 4px 10px;
-    font-size: 20px;
-}
-
-.ventana__cuerpo {
-    background: #000;
-    border-top: 2px solid #404040;
-    border-left: 2px solid #404040;
-    border-right: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-    padding: clamp(20px, 4vw, 56px);
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(24px, 4vw, 64px);
-    align-items: center;
-    color: var(--fg);
-}
-
-.ventana__cd {
+.cd__video {
     width: 100%;
-    max-width: 560px;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    justify-self: center;
+    /* el fondo gris oscuro del video se funde con el negro de la página */
+    mix-blend-mode: lighten;
 }
 
-.ventana__panel {
-    min-width: 0;
-}
-
-.pl-lista {
+.cd__info {
+    margin-top: 8px;
     border-top: 1px solid var(--line);
+    padding-top: 24px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
+    row-gap: 8px;
+    align-items: baseline;
 }
 
-.pl-fila {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 22px 16px;
-    border: 0;
-    border-bottom: 1px solid var(--line);
-    background: transparent;
-    color: var(--fg);
-    text-align: left;
-    font: inherit;
-    cursor: pointer;
-    transition: background 0.25s, color 0.25s;
-}
-
-.pl-fila:hover {
-    background: #161616;
-}
-
-.pl-fila.activa {
-    background: var(--fg);
-    color: var(--bg);
-}
-
-.pl-num {
+.cd__num {
     font-family: var(--font-display);
     font-weight: 600;
     font-size: 14px;
-    opacity: 0.6;
+    color: var(--muted);
 }
 
-.pl-dato {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.pl-dato b {
+.cd__titulo {
     font-family: "Archivo Black", var(--font-display);
     font-weight: 400;
-    font-size: clamp(26px, 3vw, 44px);
+    font-size: clamp(32px, 4vw, 56px);
     line-height: 1;
+    letter-spacing: -0.02em;
     text-transform: uppercase;
 }
 
-.pl-dato small {
-    font-family: var(--font-body);
-    font-size: 14px;
-    opacity: 0.7;
+.cd__desc,
+.cd__link {
+    grid-column: 2;
 }
 
-.pl-estado {
-    font-family: "VT323", monospace;
-    font-size: 22px;
+.cd__desc {
+    color: var(--muted);
+    font-size: 15px;
 }
 
-/* botón gris en relieve, como los de Windows 98 */
-.pl-link {
-    margin-top: 28px;
+.cd__link {
+    margin-top: 12px;
+    justify-self: start;
     display: inline-flex;
     align-items: center;
-    min-height: 48px;
-    padding: 0 24px;
-    font-family: "VT323", monospace;
-    font-size: 24px;
-    color: #000;
-    background: #c0c0c0;
-    border-top: 2px solid #fff;
-    border-left: 2px solid #fff;
-    border-right: 2px solid #404040;
-    border-bottom: 2px solid #404040;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 20px;
+    border: 1px solid var(--fg);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: background 0.25s, color 0.25s;
 }
 
-.pl-link:active {
-    border-top-color: #404040;
-    border-left-color: #404040;
-    border-right-color: #fff;
-    border-bottom-color: #fff;
-}
-
-.ventana__estado {
-    padding: 4px 10px 0;
-    font-size: 20px;
+.cd__link:hover {
+    background: var(--fg);
+    color: var(--bg);
 }
 
 
@@ -972,29 +867,8 @@ h1, h2 {
         align-items: start;
     }
 
-    .ventana__cuerpo {
+    .playlists__grid {
         grid-template-columns: 1fr;
-    }
-
-    .ventana__cd {
-        max-width: 320px;
-    }
-
-    .ventana__menu {
-        display: none;
-    }
-
-    .ventana__cuerpo {
-        padding: 16px;
-    }
-
-    .pl-fila {
-        gap: 12px;
-        padding: 18px 10px;
-    }
-
-    .pl-estado {
-        font-size: 18px;
     }
 }
 

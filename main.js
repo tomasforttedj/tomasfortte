@@ -162,32 +162,6 @@ if (!sinMovimiento) {
 }
 
 
-// ---------- 8. Playlists: elegir una cambia el CD que gira y el link de Spotify ----------
-// Como pasar de un tema a otro en la cabina: un botón activo a la vez.
-
-const filas = document.querySelectorAll('.pl-fila')
-const cdVideo = document.querySelector('.ventana__cd')
-const plLink = document.querySelector('.pl-link')
-
-filas.forEach(function (fila) {
-    fila.addEventListener('click', function () {
-        filas.forEach(function (f) {
-            f.classList.remove('activa')
-            f.setAttribute('aria-pressed', 'false')
-            f.querySelector('.pl-estado').textContent = 'Escuchar'
-        })
-        fila.classList.add('activa')
-        fila.setAttribute('aria-pressed', 'true')
-        fila.querySelector('.pl-estado').textContent = 'Sonando'
-
-        cdVideo.poster = fila.dataset.poster
-        cdVideo.src = fila.dataset.cd
-        cdVideo.play().catch(function () {})
-        plLink.href = fila.dataset.link
-    })
-})
-
-
-// ---------- 9. Año del footer, siempre actualizado ----------
+// ---------- 8. Año del footer, siempre actualizado ----------
 
 document.querySelector('#anio').textContent = new Date().getFullYear()
