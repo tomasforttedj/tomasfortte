@@ -109,8 +109,8 @@ document.querySelectorAll('.split').forEach(function (palabra) {
     letras.forEach(function (letra, i) {
         const span = document.createElement('span')
         span.className = 'char'
-        span.textContent = letra
-        span.style.setProperty('--i', i + (palabra.classList.contains('outline') ? 5 : 0))
+        span.textContent = letra === ' ' ? '\u00a0' : letra   // el espacio necesita ser "duro" para no desaparecer
+        span.style.setProperty('--i', i)
         palabra.appendChild(span)
     })
 })

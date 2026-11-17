@@ -9,6 +9,7 @@
 @font-face { font-family: "Unbounded"; font-weight: 600; font-display: swap; src: url("fonts/unbounded-600.woff2") format("woff2"); }
 @font-face { font-family: "Unbounded"; font-weight: 800; font-display: swap; src: url("fonts/unbounded-800.woff2") format("woff2"); }
 @font-face { font-family: "Unbounded"; font-weight: 900; font-display: swap; src: url("fonts/unbounded-900.woff2") format("woff2"); }
+@font-face { font-family: "Inter Tight"; font-weight: 700; font-display: swap; src: url("fonts/inter-tight-700.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url("fonts/inter-400.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 500; font-display: swap; src: url("fonts/inter-500.woff2") format("woff2"); }
 @font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url("fonts/inter-600.woff2") format("woff2"); }
@@ -238,18 +239,18 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
+/* el nombre va en una sola línea, con otra letra (Inter Tight), limpia estilo Apple */
 .hero__title {
-    font-weight: 900;
-    font-size: clamp(44px, 8.5vw, 140px);
-    line-height: 0.88;
+    font-family: "Inter Tight", var(--font-body);
+    font-weight: 700;
+    font-size: clamp(38px, 11.2vw, 190px);
+    line-height: 0.9;
+    letter-spacing: -0.055em;
+    white-space: nowrap;
 }
 
 .hero__title span {
     display: block;
-}
-
-.hero__title .outline {
-    -webkit-text-stroke-width: clamp(1.5px, 0.25vw, 3px);
 }
 
 .hero__bottom {
@@ -792,7 +793,7 @@ h1, h2 {
 @media (max-width: 600px) {
 
     .hero__title {
-        font-size: 13vw;
+        font-size: 11.6vw;
     }
 
     .galeria__track img {
