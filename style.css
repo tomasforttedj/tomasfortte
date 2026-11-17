@@ -714,12 +714,28 @@ h1, h2 {
     font-size: 22px;
 }
 
-.pl-player {
-    display: block;
-    width: 100%;
+/* botón gris en relieve, como los de Windows 98 */
+.pl-link {
     margin-top: 28px;
-    border: 0;
-    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 24px;
+    font-family: "VT323", monospace;
+    font-size: 24px;
+    color: #000;
+    background: #c0c0c0;
+    border-top: 2px solid #fff;
+    border-left: 2px solid #fff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+}
+
+.pl-link:active {
+    border-top-color: #404040;
+    border-left-color: #404040;
+    border-right-color: #fff;
+    border-bottom-color: #fff;
 }
 
 .ventana__estado {

@@ -17,7 +17,7 @@
 
     <!-- las fuentes viven en /fonts (no dependen de Google) -->
     <link rel="preload" href="./fonts/archivo-black-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=22">
+    <link rel="stylesheet" href="style.css?v=23">
 </head>
 
 <body>
@@ -197,7 +197,7 @@
                             <li>
                                 <button class="pl-fila activa" aria-pressed="true"
                                     data-cd="./media/cd-cachengue.mp4" data-poster="./media/cd-cachengue.jpg"
-                                    data-embed="https://open.spotify.com/embed/playlist/5SGw1RMd0BtnpVQlDoyVtH?theme=0">
+                                    data-link="https://open.spotify.com/playlist/5SGw1RMd0BtnpVQlDoyVtH">
                                     <span class="pl-num">01</span>
                                     <span class="pl-dato"><b>Cachengue</b><small>Top 50 hits · 50 temas</small></span>
                                     <span class="pl-estado">Sonando</span>
@@ -206,7 +206,7 @@
                             <li>
                                 <button class="pl-fila" aria-pressed="false"
                                     data-cd="./media/cd-pop.mp4" data-poster="./media/cd-pop.jpg"
-                                    data-embed="https://open.spotify.com/embed/playlist/5LNvvFE8JOerfvicLSkX68?theme=0">
+                                    data-link="https://open.spotify.com/playlist/5LNvvFE8JOerfvicLSkX68">
                                     <span class="pl-num">02</span>
                                     <span class="pl-dato"><b>Pop</b><small>Hit list · 77 temas</small></span>
                                     <span class="pl-estado">Escuchar</span>
@@ -214,9 +214,9 @@
                             </li>
                         </ul>
 
-                        <iframe class="pl-player" title="Reproductor de Spotify"
-                            src="https://open.spotify.com/embed/playlist/5SGw1RMd0BtnpVQlDoyVtH?theme=0"
-                            height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                        <a class="pl-link" href="https://open.spotify.com/playlist/5SGw1RMd0BtnpVQlDoyVtH" target="_blank" rel="noopener">
+                            ▶ Escuchar en Spotify
+                        </a>
                     </div>
                 </div>
 
@@ -268,6 +268,6 @@
         <p>© <span id="anio">2026</span> Tomas Fortte · Mendoza, Argentina</p>
     </footer>
 
-    <script src="./main.js?v=22"></script>
+    <script src="./main.js?v=23"></script>
 </body>
 </html>

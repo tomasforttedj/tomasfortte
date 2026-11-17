@@ -162,12 +162,12 @@ if (!sinMovimiento) {
 }
 
 
-// ---------- 8. Playlists: elegir una cambia el CD que gira y el reproductor ----------
+// ---------- 8. Playlists: elegir una cambia el CD que gira y el link de Spotify ----------
 // Como pasar de un tema a otro en la cabina: un botón activo a la vez.
 
 const filas = document.querySelectorAll('.pl-fila')
 const cdVideo = document.querySelector('.ventana__cd')
-const player = document.querySelector('.pl-player')
+const plLink = document.querySelector('.pl-link')
 
 filas.forEach(function (fila) {
     fila.addEventListener('click', function () {
@@ -183,7 +183,7 @@ filas.forEach(function (fila) {
         cdVideo.poster = fila.dataset.poster
         cdVideo.src = fila.dataset.cd
         cdVideo.play().catch(function () {})
-        player.src = fila.dataset.embed
+        plLink.href = fila.dataset.link
     })
 })
 
