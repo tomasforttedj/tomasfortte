@@ -240,7 +240,7 @@ h1, h2 {
 
 .hero__title {
     font-weight: 900;
-    font-size: clamp(52px, 14.5vw, 250px);
+    font-size: clamp(44px, 8.5vw, 140px);
     line-height: 0.88;
 }
 
@@ -503,7 +503,7 @@ h1, h2 {
 
 .booking__titulo {
     font-weight: 900;
-    font-size: clamp(48px, 13vw, 220px);
+    font-size: clamp(44px, 8.5vw, 140px);
     line-height: 0.88;
 }
 
@@ -641,7 +641,7 @@ h1, h2 {
 @media (max-width: 600px) {
 
     .hero__title {
-        font-size: 16.5vw;
+        font-size: 13vw;
     }
 
     .galeria__track img {
