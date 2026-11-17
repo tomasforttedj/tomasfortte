@@ -3,117 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomas Fortte</title>
+    <title>Tomas Fortte — DJ Open Format · Mendoza</title>
+    <meta name="description" content="Tomas Fortte, DJ open format de Mendoza. Cachengue y pop para boliches, festivales y eventos privados. Abrió para Abel Pintos, Diego Torres, L-Gante y Q' Lokura.">
+    <meta property="og:title" content="Tomas Fortte — DJ Open Format">
+    <meta property="og:description" content="Boliches, festivales y eventos privados. Booking abierto.">
+    <meta property="og:image" content="https://tomasfortte.com/media/open-show-q-lokura.jpg">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <link rel="icon" type="image/png" sizes="180x180" href="./media/favicon-180.png">
+    <link rel="apple-touch-icon" href="./media/favicon-180.png">
+
+    <!-- las fuentes viven en /fonts (no dependen de Google) -->
+    <link rel="preload" href="./fonts/unbounded-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="style.css">
-    <link rel="Icon" type="image.png" sizes="180x180" href="https://res.cloudinary.com/dmoui89wo/image/upload/v1777017588/Icon_Tomas_blanco_f5cvo6.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <header>
-    <a href="./index.html"><img src="./media/Logo Tomas blanco.png" alt="logo tomas white"></a>
-    <nav>
-        <ul>
-            <li> 
-                <a href="#biografia">BIOGRAFÍA</a>
-            </li>
-            <!-- 
-            <li>
-                <a href="#contacto">CONTACTO</a>
-            </li>
-            <li>
-                <a href="#media-content">CONTENIDO</a>
-            </li> -->
+    <!-- ========== HEADER ========== -->
+    <header class="header">
+        <a href="#inicio" class="header__logo" aria-label="Tomas Fortte, volver al inicio">
+            <img src="./media/icon-tomas-blanco-recorte.png" alt="">
+        </a>
 
-        </ul>
-    </nav>
+        <button class="header__menu-btn" aria-expanded="false" aria-controls="menu">Menú</button>
+
+        <nav class="header__nav" id="menu" aria-label="Principal">
+            <a href="#boliches">Boliches y festivales</a>
+            <a href="#privados">Eventos privados</a>
+            <a href="#galeria">Galería</a>
+            <a href="#booking" class="btn btn--solid">Booking</a>
+        </nav>
     </header>
 
 
     <main>
-    <section class="big-intro"> <!-- momento hero we -->
-        <video src="https://res.cloudinary.com/dmoui89wo/video/upload/v1777016810/tomi_fortte_screen_2_cybvvx.mp4" autoplay loop muted playsinline> </video>
-        <div class="herotag">
-        <p class="hero-tag">DJ</p>
-        <!-- <p class="hero-tag2">and also FrontEndDev :)</p> -->
-        </div>
-        <h1>TOMAS FORTTE</h1> <!-- meter logo aca -->
-        <h2>Open Format</h2>
-    </section>
 
-    <section id="biografia" class="paginas">
-        <h3>BIOGRAFÍA</h3>
-    <p>DJ originario de Mendoza, Argentina. Con un estilo principalmente cachengue con una fusión de pop comercial, 
-        Tomás ha logrado conquistar las pistas de baile en boliches, festivales y todo 
-    tipo de eventos sociales —desde casamientos, cumpleaños de 15, egresados, hasta eventos empresariales— 
-    creando siempre una atmósfera festiva, vibrante y memorable. Su versatilidad y presencia en escena
-    lo han llevado a destacarse en escenarios icónicos de Argentina, así como en presentaciones
-    internacionales en Chile y Uruguay. Además, ha sido convocado como DJ de open show para 
-    reconocidos artistas como Q' Lokura, Diego Torres, Dame 5, Abel Pintos, L-Gante, Pijama Party 
-    entre otras bandas destacadas del circuito local.</p>
-    <p class="lugares">
-    Entre sus actuaciones más relevantes se destacan su participación en festivales de gran convocatoria como la 
-    "Vendimia de la Ciudad de Mendoza" y "Rivadavia le canta al País". En la escena local mantiene su actual residencia 
-    en Wabi Fun Club, además de presentaciones en espacios como Bosco Sunset, Black Jagger Club, Roble Wake Park Sunsets,
-    Chirolas, Fronteo, Grita Silencio, etc. También ha formado parte de importantes fiestas y venues del país como Fiesta Plop! 
-    (Teatro Vorterix, Buenos Aires), Foret (Villa Mercedes, San Luis), Fiesta Puerca (Teatro Vorterix, Buenos Aires), Sky Club
-    (San Luis), Comuna Club (San Luis) y Jungle (San Juan), junto a presentaciones internacionales en Sala del Museo
-    (Montevideo, Uruguay), Hollywood (Viña del Mar, Chile) y LongBeach (Reñaca, Chile).
-    </p>
+        <!-- ========== HERO ========== -->
+        <section class="hero" id="inicio">
+            <video class="hero__video"
+                src="https://res.cloudinary.com/dmoui89wo/video/upload/v1777016810/tomi_fortte_screen_2_cybvvx.mp4"
+                poster="./media/open-show-q-lokura.jpg"
+                autoplay loop muted playsinline></video>
 
-    <div class="fotos-scroll">
-        <figure> 
-        <img src="./media/DSC01692.jpg" alt="julitom-wabi">
-        <figcaption>Wabi Fun Club | Egresados</figcaption>
-        </figure>
-
-        <figure>
-        <img src="./media/DSC_9401.jpg" alt="vorterix">
-        <figcaption>Teatro Vorterix, Buenos Aires</figcaption>
-        </figure>
-
-        <figure>
-        <img src="./media/IMG_6216.JPEG" alt="festival">
-        <figcaption>Open Show / Q Lokura</figcaption>
-        </figure>
-        <figure>
-            <img src="./media/DSC02373.jpeg" alt="fronteo">
-            <figcaption>Fronteo</figcaption>
-        </figure>
-    </div> 
-    <!-- 
-
-    </section>
-    <section id="contacto" class="paginas">
-        <div class="contacto-left"> 
-        <h2>/ contacto /</h2>
-        <h3>Estamos para ayudarte y responder tus preguntas.</h3>
-            <p>Teléfono +54 9 11 2519 4491</p>
-            <p>E-mail bookingbytoms@gmail.com</p>
-           
-        </div> 
+            <div class="hero__content">
+                <p class="hero__tag">DJ — Open Format</p>
+                <h1 class="hero__title">
+                    <span>Tomas</span>
+                    <span class="outline">Fortte</span>
+                </h1>
+                <div class="hero__bottom">
+                    <p>Cachengue y pop para pistas grandes.<br>Mendoza, Argentina — tocando en AR, CL y UY.</p>
+                    <a href="#booking" class="btn btn--solid">Consultar fecha</a>
+                </div>
+            </div>
+        </section>
 
 
+        <!-- ========== ABRIÓ PARA ========== -->
+        <section class="artistas reveal" aria-labelledby="artistas-titulo">
+            <p class="label" id="artistas-titulo">Abrió para</p>
+            <ul class="artistas__lista">
+                <li>Abel Pintos</li>
+                <li>Diego Torres</li>
+                <li>L-Gante</li>
+                <li>Q' Lokura</li>
+                <li>Dame 5</li>
+                <li>Pijama Party</li>
+            </ul>
+        </section>
 
-    </section>
-    <section id="media-content" class="paginas">
-        <h3>Rider técnico & Media</h3>
-        <p>PRÓXIMAMENTE (solo para productores y diseñadores)</p>
-    </section>
-    -->
+
+        <!-- ========== ESCENARIOS ========== -->
+        <section class="escenarios reveal" aria-labelledby="escenarios-titulo">
+            <div class="escenarios__intro">
+                <p class="label">Escenarios</p>
+                <h2 id="escenarios-titulo">De la residencia<br>al festival.</h2>
+            </div>
+            <ul class="escenarios__grid">
+                <li><span>Vendimia de la Ciudad</span><small>Festival · Mendoza</small></li>
+                <li><span>Rivadavia le canta al País</span><small>Festival · Mendoza</small></li>
+                <li><span>Teatro Vorterix</span><small>Fiesta Plop! · Buenos Aires</small></li>
+                <li><span>Sala del Museo</span><small>Montevideo · Uruguay</small></li>
+                <li><span>Hollywood · LongBeach</span><small>Viña del Mar y Reñaca · Chile</small></li>
+                <li><span>Wabi Fun Club</span><small>Residencia actual · Mendoza</small></li>
+            </ul>
+        </section>
+
+
+        <!-- ========== LAS DOS PUERTAS ========== -->
+        <section class="puertas" aria-label="Qué tipo de evento tenés">
+
+            <article class="puerta puerta--dark reveal" id="boliches">
+                <img src="./media/vorterix-fiesta-plop.jpg" alt="Tomas Fortte en cabina frente a la pantalla de Fiesta Plop en Teatro Vorterix" loading="lazy">
+                <div class="puerta__texto">
+                    <p class="label">Para productores</p>
+                    <h2>Boliches<br>y festivales</h2>
+                    <ul>
+                        <li>Open shows para artistas en vivo</li>
+                        <li>Residencias y fechas en boliches</li>
+                        <li>Festivales y fiestas de gran convocatoria</li>
+                    </ul>
+                    <a href="#booking" class="btn btn--solid">Pedir fecha</a>
+                </div>
+            </article>
+
+            <article class="puerta puerta--light reveal" id="privados">
+                <img src="./media/fiesta-cabina.jpg" alt="Tomas Fortte en cabina festejando con invitados de la fiesta" loading="lazy">
+                <div class="puerta__texto">
+                    <p class="label">Para tu fiesta</p>
+                    <h2>Eventos<br>privados</h2>
+                    <ul>
+                        <li>Casamientos</li>
+                        <li>Cumpleaños de 15</li>
+                        <li>Egresados</li>
+                        <li>Eventos empresariales</li>
+                    </ul>
+                    <a href="#booking" class="btn btn--dark">Consultar disponibilidad</a>
+                </div>
+            </article>
+
+        </section>
+
+
+        <!-- ========== GALERÍA ========== -->
+        <section class="galeria" id="galeria" aria-labelledby="galeria-titulo">
+            <div class="galeria__head reveal">
+                <h2 id="galeria-titulo">Galería</h2>
+                <p class="galeria__hint" aria-hidden="true">Deslizá →</p>
+            </div>
+            <div class="galeria__track" tabindex="0" aria-label="Fotos de presentaciones, deslizar horizontalmente">
+                <figure>
+                    <img src="./media/open-show-q-lokura.jpg" alt="Tomas Fortte en el escenario con su nombre en la pantalla gigante" loading="lazy">
+                    <figcaption>Open show · Q' Lokura</figcaption>
+                </figure>
+                <figure>
+                    <img src="./media/wabi-egresados.jpg" alt="Vista desde la cabina de Wabi Fun Club con la pista llena" loading="lazy">
+                    <figcaption>Wabi Fun Club · Egresados</figcaption>
+                </figure>
+                <figure>
+                    <img src="./media/vorterix-fiesta-plop.jpg" alt="Tomas Fortte tocando en Teatro Vorterix" loading="lazy">
+                    <figcaption>Teatro Vorterix · Buenos Aires</figcaption>
+                </figure>
+                <figure>
+                    <img src="./media/fiesta-cabina.jpg" alt="Tomas Fortte con invitados en la cabina" loading="lazy">
+                    <figcaption>Fronteo</figcaption>
+                </figure>
+                <!-- Para sumar una foto: copiá un <figure> de arriba, poné la foto en /media
+                     con nombre en minúscula y sin espacios, y cambiá src, alt y figcaption. -->
+            </div>
+        </section>
+
+
+        <!-- ========== BIO ========== -->
+        <section class="bio reveal" aria-labelledby="bio-titulo">
+            <p class="label" id="bio-titulo">Bio</p>
+            <p class="bio__grande">DJ de Mendoza, Argentina. Cachengue mezclado con pop comercial, y una lectura de pista que funciona igual en un boliche lleno que en un casamiento.</p>
+            <p class="bio__chica">Tocó en festivales como la Vendimia de la Ciudad de Mendoza y Rivadavia le canta al País, en Teatro Vorterix con Fiesta Plop! y Fiesta Puerca, y afuera en Sala del Museo (Montevideo), Hollywood (Viña del Mar) y LongBeach (Reñaca). Hoy es residente en Wabi Fun Club y pasa por Bosco Sunset, Black Jagger, Roble Wake Park, Chirolas, Fronteo y Grita Silencio, entre otros.</p>
+        </section>
+
+
+        <!-- ========== BOOKING ========== -->
+        <section class="booking" id="booking" aria-labelledby="booking-titulo">
+            <h2 class="booking__titulo reveal" id="booking-titulo">
+                <span>Booking</span>
+                <span class="outline">abierto</span>
+            </h2>
+            <div class="booking__datos reveal">
+                <p>Contame fecha, lugar y tipo de evento, y te respondo con disponibilidad.</p>
+                <!-- REVISAR: estos datos salen del bloque de contacto que estaba comentado en la web vieja -->
+                <a href="https://wa.me/5491125194491" class="btn btn--solid btn--grande" target="_blank" rel="noopener">Escribime por WhatsApp</a>
+                <a href="mailto:bookingbytoms@gmail.com" class="booking__mail">bookingbytoms@gmail.com</a>
+            </div>
+        </section>
 
     </main>
 
 
-    <footer>
-    <p>© designed by tomasfortte</p>
-</footer>
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <img src="./media/logo-tomas-blanco-recorte.png" alt="Tomas Fortte" class="footer__logo" loading="lazy">
+        <p>© <span id="anio">2026</span> Tomas Fortte · Mendoza, Argentina</p>
+    </footer>
 
-<script src="./main.js"></script>
-
+    <script src="./main.js"></script>
 </body>
-
 </html>
