@@ -17,10 +17,18 @@
 
     <!-- las fuentes viven en /fonts (no dependen de Google) -->
     <link rel="preload" href="./fonts/archivo-black-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="style.css?v=25">
+    <link rel="stylesheet" href="style.css?v=26">
+    <!-- se marca antes de pintar nada, así la pantalla de carga aparece desde el primer instante -->
+    <script>document.documentElement.classList.add('js')</script>
 </head>
 
 <body>
+
+    <!-- ========== PANTALLA DE CARGA (isotipo mientras se carga el video) ========== -->
+    <div class="cargando" aria-hidden="true">
+        <img src="./media/icon-tomas-blanco-recorte.png" alt="" width="90" height="48">
+        <span class="cargando__barra"><i></i></span>
+    </div>
 
     <!-- ========== HEADER ========== -->
     <header class="header">
@@ -262,6 +270,6 @@
         <p>© <span id="anio">2026</span> Tomas Fortte · Mendoza, Argentina</p>
     </footer>
 
-    <script src="./main.js?v=25"></script>
+    <script src="./main.js?v=26"></script>
 </body>
 </html>

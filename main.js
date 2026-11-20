@@ -16,6 +16,37 @@ heroVideo.poster = pantallaVertical ? heroVideo.dataset.posterVertical : heroVid
 heroVideo.src = pantallaVertical ? heroVideo.dataset.vertical : heroVideo.dataset.horizontal
 
 
+// ---------- 0b. Pantalla de carga ----------
+// Como esperar que el tema cargue entero en la bandeja antes de soltarlo:
+// sacamos el isotipo cuando el video ya puede sonar sin cortes.
+// Reglas: se ve al menos 0.8 s (para que no parpadee), como máximo 4 s,
+// y una sola vez por visita (después el video ya queda guardado).
+
+const cargando = document.querySelector('.cargando')
+const inicioCarga = performance.now()
+
+function mostrarWeb() {
+    if (!cargando || cargando.classList.contains('fuera')) return
+    const espera = Math.max(0, 800 - (performance.now() - inicioCarga))
+    setTimeout(function () {
+        cargando.classList.add('fuera')
+        document.documentElement.classList.add('listo')
+        try { sessionStorage.setItem('tf-visto', '1') } catch (e) {}
+    }, espera)
+}
+
+let yaVisto = false
+try { yaVisto = sessionStorage.getItem('tf-visto') === '1' } catch (e) {}
+
+if (yaVisto || heroVideo.readyState >= 4) {
+    cargando.classList.add('fuera')
+    document.documentElement.classList.add('listo')
+} else {
+    heroVideo.addEventListener('canplaythrough', mostrarWeb, { once: true })
+    setTimeout(mostrarWeb, 4000)
+}
+
+
 // ---------- 1. Header: se esconde al bajar, vuelve al subir ----------
 // (es tu lógica de antes, con un agregado: le pone fondo cuando ya no estás arriba de todo)
 
