@@ -19,7 +19,7 @@ heroVideo.src = pantallaVertical ? heroVideo.dataset.vertical : heroVideo.datase
 // ---------- 0b. Pantalla de carga ----------
 // Como esperar que el tema cargue entero en la bandeja antes de soltarlo:
 // sacamos el isotipo cuando el video ya puede sonar sin cortes.
-// Reglas: se ve al menos 0.8 s (para que no parpadee), como máximo 4 s,
+// Reglas: se ve al menos 1.2 s (para que no parpadee), como máximo 4 s,
 // y una sola vez por visita (después el video ya queda guardado).
 
 const cargando = document.querySelector('.cargando')
@@ -27,7 +27,7 @@ const inicioCarga = performance.now()
 
 function mostrarWeb() {
     if (!cargando || cargando.classList.contains('fuera')) return
-    const espera = Math.max(0, 800 - (performance.now() - inicioCarga))
+    const espera = Math.max(0, 1200 - (performance.now() - inicioCarga))
     setTimeout(function () {
         cargando.classList.add('fuera')
         document.documentElement.classList.add('listo')
@@ -37,12 +37,15 @@ function mostrarWeb() {
 
 let yaVisto = false
 try { yaVisto = sessionStorage.getItem('tf-visto') === '1' } catch (e) {}
+// con #intro al final de la dirección se fuerza a verla (para probarla)
+if (location.hash === '#intro') yaVisto = false
 
-if (yaVisto || heroVideo.readyState >= 4) {
+if (yaVisto) {
     cargando.classList.add('fuera')
     document.documentElement.classList.add('listo')
 } else {
-    heroVideo.addEventListener('canplaythrough', mostrarWeb, { once: true })
+    if (heroVideo.readyState >= 4) mostrarWeb()
+    else heroVideo.addEventListener('canplaythrough', mostrarWeb, { once: true })
     setTimeout(mostrarWeb, 4000)
 }
 
